@@ -9,9 +9,11 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("ALTER TABLE customers ADD COLUMN(id INT AUTO_INCREMENT PRIMARY KEY")
+sql = "INSERT INTO customers (name, address) VALUES (%s, %s)"
+val = ("John", "Highway 10")
 
-mycursor.execute("SHOW TABLES")
+mycursor.execute(sql, val)
 
-for x in mycursor:
-    print(x)
+mydb.commit() # This line is required to make the changes
+
+print(mycursor.rowcount, "record inserted.")
