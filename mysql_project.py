@@ -9,7 +9,13 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT * FROM customers WHERE address LIKE '%way%'")
+# select records where address contains "way":
+# mycursor.execute("SELECT * FROM customers WHERE address LIKE '%way%'")
+
+sql = "SELECT * FROM customers WHERE address = %s"
+adr = ("Yellow Garden 2", )
+
+mycursor.execute(sql, adr)
 
 myresult = mycursor.fetchall()
 
