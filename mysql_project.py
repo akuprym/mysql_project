@@ -9,7 +9,7 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-mycursor.execute("SELECT name, address FROM customers")
+mycursor.execute("SELECT * FROM customers WHERE address LIKE '%way%'")
 
 myresult = mycursor.fetchall()
 
