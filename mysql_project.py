@@ -54,3 +54,16 @@ myresult = mycursor.fetchall()
 for x in myresult:
     print(x)
 
+# Join 2 tables
+sql = "SELECT \
+  users.name AS user, \
+  products.name AS favorite \
+  FROM users \
+  INNER JOIN products ON users.fav = products.id"
+
+mycursor.execute(sql)
+myresult = mycursor.fetchall()
+
+for x in myresult:
+  print(x)
+
