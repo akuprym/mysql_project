@@ -20,10 +20,15 @@ mycursor = mydb.cursor()
 #mycursor.execute("SELECT * FROM customers ORDER BY name")
 
 # - Order descending:
-mycursor.execute("SELECT * FROM customers ORDER BY name DESC")
+# mycursor.execute("SELECT * FROM customers ORDER BY name DESC")
 
-myresult = mycursor.fetchall()
 
-for x in myresult:
-    print(x)
+# - Delete:
+mycursor.execute("DELETE FROM customers WHERE address = 'Mountain 21'")
+mydb.commit()
+
+print(mycursor.rowcount, "record(s) deleted")
+
+# for x in myresult:
+#    print(x)
 
