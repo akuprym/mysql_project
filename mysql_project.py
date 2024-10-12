@@ -3,7 +3,7 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="",
+    password="Qwas74123",
     database="mydatabase"
 )
 
@@ -35,7 +35,14 @@ mycursor = mydb.cursor()
 # mycursor.execute(sql)
 
 # - Overwrite record:
-sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"
-mycursor.execute(sql)
+# sql = "UPDATE customers SET address = 'Canyon 123' WHERE address = 'Valley 345'"
+#mycursor.execute(sql)
+#mydb.commit()
+#print(mycursor.rowcount, "record(s) affected")
+
+# - Use placeholder %s to escape values
+sql = "UPDATE customers SET address = %s WHERE address = %s"
+val = ("Valley 345", "Canyon 123")
+mycursor.execute(sql, val)
 mydb.commit()
 print(mycursor.rowcount, "record(s) affected")
