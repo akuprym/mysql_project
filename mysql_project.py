@@ -3,7 +3,7 @@ import mysql.connector
 mydb = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Qwas74123",
+    password="",
     database="mydatabase"
 )
 
@@ -24,10 +24,13 @@ mycursor = mydb.cursor()
 
 
 # - Delete:
-mycursor.execute("DELETE FROM customers WHERE address = 'Mountain 21'")
-mydb.commit()
+# mycursor.execute("DELETE FROM customers WHERE address = 'Mountain 21'")
+# mydb.commit()
 
-print(mycursor.rowcount, "record(s) deleted")
+# print(mycursor.rowcount, "record(s) deleted")
+
+sql = "DROP TABLE IF EXISTS clients"
+mycursor.execute(sql)
 
 # for x in myresult:
 #    print(x)
