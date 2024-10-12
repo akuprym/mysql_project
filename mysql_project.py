@@ -41,8 +41,16 @@ mycursor = mydb.cursor()
 #print(mycursor.rowcount, "record(s) affected")
 
 # - Use placeholder %s to escape values
-sql = "UPDATE customers SET address = %s WHERE address = %s"
-val = ("Valley 345", "Canyon 123")
-mycursor.execute(sql, val)
-mydb.commit()
-print(mycursor.rowcount, "record(s) affected")
+
+# sql = "UPDATE customers SET address = %s WHERE address = %s"
+# val = ("Valley 345", "Canyon 123")
+# mycursor.execute(sql, val)
+# mydb.commit()
+# print(mycursor.rowcount, "record(s) affected")
+
+# Return 5 records, start from position 3:
+sql = "SELECT * FROM customers LIMIT 5 OFFSET 2"
+mycursor.execute(sql)
+myresult = mycursor.fetchall()
+for x in myresult:
+    print(x)
