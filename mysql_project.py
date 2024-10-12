@@ -9,13 +9,18 @@ mydb = mysql.connector.connect(
 
 mycursor = mydb.cursor()
 
-# select records where address contains "way":
+# - select records where address contains "way":
 # mycursor.execute("SELECT * FROM customers WHERE address LIKE '%way%'")
 
-sql = "SELECT * FROM customers WHERE address = %s"
-adr = ("Yellow Garden 2", )
+# - use placeholder %s to escape values:
+# sql = "SELECT * FROM customers WHERE address = %s"
+# adr = ("Yellow Garden 2", )
 
-mycursor.execute(sql, adr)
+# - Order ascending:
+#mycursor.execute("SELECT * FROM customers ORDER BY name")
+
+# - Order descending:
+mycursor.execute("SELECT * FROM customers ORDER BY name DESC")
 
 myresult = mycursor.fetchall()
 
